@@ -1,6 +1,7 @@
-// utils/api.ts
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
+  process.env.NEXT_PUBLIC_USE_EMULATOR == "true"
+    ? "http://localhost:5001/ebuddy-test-8188f/us-central1/api"
+    : process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("authToken");

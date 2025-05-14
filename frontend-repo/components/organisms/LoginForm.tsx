@@ -5,7 +5,8 @@ import { Box, Container, TextField, Paper } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Button from "../atoms/Button";
 import Typography from "../atoms/Typography";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { FirebaseError } from "firebase/app";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -31,11 +32,35 @@ const LoginForm: React.FC = () => {
       localStorage.setItem("authToken", token);
       router.push("/dashboard");
     } catch (err) {
-      setError((err as Error).message);
+      if (err instanceof FirebaseError && err.code === 'auth/user-not-found') {
+        await registerUserIfNotExists(email, password)
+      } else {
+        setError((err as Error).message);
+      }
     } finally {
       setLoading(false);
     }
   };
+
+  const registerUserIfNotExists = async (email: string, password: string) => {
+    try {
+      const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+      if (signInMethods.length === 0) {
+        // No user exists, create a new user
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        console.log("User registered:", user);
+        const token = await user.getIdToken();
+        localStorage.setItem("authToken", token);
+        router.push("/dashboard");
+      } else {
+        console.log("User already exists. Please sign in.");
+      }
+    } catch (error) {
+      console.error("Error checking or registering user:", error);
+      setError((error as Error).message);
+    }
+  }
 
   return (
     <Container maxWidth="sm">

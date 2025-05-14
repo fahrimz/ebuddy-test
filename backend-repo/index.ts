@@ -1,7 +1,12 @@
+import * as functions from "firebase-functions";
 import app from "./core/app";
 
-const PORT = process.env.PORT || 3000;
+if (process.env.FUNCTIONS_EMULATOR !== "true") {
+  const APP_PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => {
-  console.log(`app running on port ${PORT}`);
-})
+  app.listen(APP_PORT, () => {
+    console.log(`app running on port ${APP_PORT}`);
+  });
+}
+
+export const api = functions.https.onRequest(app);

@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "emulated": "NEXT_PUBLIC_USE_EMULATOR=true npm run dev"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

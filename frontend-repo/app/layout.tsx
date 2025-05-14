@@ -8,6 +8,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import { store } from "../store";
 import theme from "../theme/theme";
 import { FirebaseOptions, initializeApp } from "firebase/app";
+import { connectAuthEmulator, getAuth } from "firebase/auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,14 @@ const firebaseConfig: FirebaseOptions = {
 };
 
 initializeApp(firebaseConfig);
+const auth = getAuth();
+
+if (process.env.NEXT_PUBLIC_USE_EMULATOR === 'true') {
+  console.log('using firebase auth emulator')
+  connectAuthEmulator(auth, 'http://localhost:5002');
+} else {
+  console.log('NEXT_PUBLIC_USE_EMULATOR', process.env.NEXT_PUBLIC_USE_EMULATOR)
+}
 
 export default function RootLayout({
   children,
