@@ -3,7 +3,7 @@ import {
   fetchUserData as fetchUserAPI,
   updateUserData as updateUserAPI,
 } from "../../apis/userApi";
-import { User } from "@/apis/user";
+import { User } from "@ebuddy/entities";
 
 interface UserState {
   user: User | null;
@@ -59,10 +59,10 @@ const userSlice = createSlice({
           state.error = "Failed to fetch user";
           return;
         }
-        
+
         // try to parse the error
         try {
-          const errResp = JSON.parse(actionError)
+          const errResp = JSON.parse(actionError);
           state.error = errResp?.error || "Failed to fetch user";
         } catch (parseErr) {
           // pass error as-is if parsing failed

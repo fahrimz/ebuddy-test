@@ -3,7 +3,7 @@ import { Box, TextField, Paper } from '@mui/material';
 import Button from '../atoms/Button';
 import Typography from '../atoms/Typography';
 import { UpdateStatus } from '../atoms/UpdateButton';
-import { User } from '@/apis/user';
+import { User } from '@ebuddy/entities'
 
 interface UpdateUserFormProps {
   user: User | null;

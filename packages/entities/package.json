@@ -1,0 +1,11 @@
+{
+  "name": "@ebuddy/entities",
+  "private": true,
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}

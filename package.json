@@ -7,6 +7,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:be": "turbo run dev --filter=@ebuddy/backend-repo",
+    "dev:fe": "turbo run dev --filter=@ebuddy/frontend-repo",
     "lint": "turbo run lint"
   },
   "packageManager": "pnpm@10.0.0",

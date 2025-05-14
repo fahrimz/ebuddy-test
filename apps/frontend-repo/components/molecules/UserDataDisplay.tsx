@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Paper } from '@mui/material';
 import Typography from '../atoms/Typography';
-import { User } from '@/apis/user';
+import { User } from '@ebuddy/entities';
 
 interface UserDataDisplayProps {
   user: User | null;

@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@ebuddy/entities": ["./packages/entities"]
+    }
+  }
+}

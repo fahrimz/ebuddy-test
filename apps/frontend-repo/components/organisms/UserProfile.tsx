@@ -7,9 +7,8 @@ import UserDataDisplay from "../molecules/UserDataDisplay";
 import UpdateUserForm from "../molecules/UpdateUserForm";
 import { AppDispatch, RootState } from "../../store";
 import { fetchUser, updateUser } from "../../store/slices/userSlice";
-import { User } from "@/apis/user";
 import { useRouter } from "next/navigation";
-import { LoginError } from "@/apis/error";
+import { LoginError, User } from "@ebuddy/entities";
 
 const UserProfile: React.FC = () => {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import admin from "../config/firebaseConfig";
-import { LoginError } from "../entities/error";
+import { LoginError } from "@ebuddy/entities";
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -1,6 +1,6 @@
 import { UserRecord } from "firebase-admin/lib/auth/user-record";
 import { db } from "../config/firebaseConfig";
-import { User } from "../entities/user";
+import { User } from "@ebuddy/entities";
 
 export const userCollection = db.collection("users");
 

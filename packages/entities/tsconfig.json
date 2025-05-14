@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "paths": {
+      "@ebuddy/entities": ["."]
+    }
+  },
+  "include": ["./src", "index.ts"]
+}
