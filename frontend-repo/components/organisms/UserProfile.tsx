@@ -28,7 +28,7 @@ const UserProfile: React.FC = () => {
       localStorage.removeItem("authToken");
       router.replace("/");
     }
-  }, [error]);
+  }, [error, router]);
 
   useEffect(() => {
     dispatch(fetchUser());
