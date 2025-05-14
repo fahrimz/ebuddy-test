@@ -1,5 +1,5 @@
 {
-  "name": "frontend-repo",
+  "name": "@ebuddy/frontend-repo",
   "version": "0.1.0",
   "private": true,
   "scripts": {

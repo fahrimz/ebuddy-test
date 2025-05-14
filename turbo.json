@@ -1,0 +1,18 @@
+{
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+      "inputs": ["$TURBO_DEFAULT$", "!README.md"]
+    },
+    "dev": {
+      "dependsOn": []
+    },
+    "emulate": {
+      "dependsOn": ["backend-repo#build"]
+    },
+    "frontend-repo#emulate": {
+      "dependsOn": ["backend-repo#emulate"]
+    }
+  }
+}
