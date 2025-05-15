@@ -23,7 +23,7 @@ const UserDataDisplay: React.FC<UserDataDisplayProps> = ({ user, loading, error 
   }
 
   return (
-    <Paper elevation={2} sx={{ p: 3, mt: 2 }}>
+    <Paper elevation={2} sx={{ p: 3 }}>
       <Typography variant="h6" gutterBottom>User Information</Typography>
       <Box sx={{ mt: 2 }}>
         <Typography variant="body1"><strong>Name:</strong> {user.name.length > 0 ? user.name : "N/A"}</Typography>

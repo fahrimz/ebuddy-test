@@ -50,30 +50,32 @@ const UserProfile: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md" sx={{ padding: 4 }}>
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
           User Profile
         </Typography>
-
         <Button
           variant="contained"
           color="primary"
           onClick={handleFetchUser}
           disabled={loading}
-          sx={{ mb: 2 }}
         >
           {loading ? "Loading..." : "Fetch User Data"}
         </Button>
-
-        <UserDataDisplay user={user} loading={loading} error={error} />
-
-        <UpdateUserForm
-          user={user}
-          updateStatus={updateStatus}
-          updateError={updateError}
-          onSubmit={handleUpdateUser}
-        />
+      </Box>
+      <Box display="flex" flexDirection={{ xs: 'column', sm: "row" }} gap={4}>
+        <Box flex={1}>
+          <UserDataDisplay user={user} loading={loading} error={error} />
+        </Box>
+        <Box flex={1}>
+          <UpdateUserForm
+            user={user}
+            updateStatus={updateStatus}
+            updateError={updateError}
+            onSubmit={handleUpdateUser}
+          />
+        </Box>
       </Box>
     </Container>
   );

@@ -39,7 +39,7 @@ const UpdateUserForm: React.FC<UpdateUserFormProps> = ({
   };
 
   return (
-    <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
+    <Paper elevation={2} sx={{ p: 3 }}>
       <Typography variant="h6" gutterBottom>Update User Information</Typography>
       <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
         <TextField
