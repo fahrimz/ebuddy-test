@@ -6,7 +6,11 @@ import Button from "../atoms/Button";
 import UserDataDisplay from "../molecules/UserDataDisplay";
 import UpdateUserForm from "../molecules/UpdateUserForm";
 import { AppDispatch, RootState } from "../../store";
-import { fetchUser, updateUser } from "../../store/slices/userSlice";
+import {
+  fetchUser,
+  resetError,
+  updateUser,
+} from "../../store/slices/userSlice";
 import { useRouter } from "next/navigation";
 import { LoginError, User } from "@ebuddy/entities";
 
@@ -20,14 +24,18 @@ const UserProfile: React.FC = () => {
   useEffect(() => {
     // redirect to login if error is related to token
     if (
-      [LoginError.INVALID_TOKEN, LoginError.NO_TOKEN_PROVIDED].includes(
-        error ?? ""
-      )
+      error &&
+      error.length > 0 &&
+      [LoginError.INVALID_TOKEN, LoginError.NO_TOKEN_PROVIDED].includes(error)
     ) {
       localStorage.removeItem("authToken");
       router.replace("/");
     }
-  }, [error, router]);
+
+    return () => {
+      dispatch(resetError());
+    };
+  }, [error]);
 
   useEffect(() => {
     dispatch(fetchUser());
