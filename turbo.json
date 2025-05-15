@@ -3,17 +3,16 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"],
       "inputs": ["$TURBO_DEFAULT$", "!README.md"]
     },
     "dev": {
-      "dependsOn": []
+      "dependsOn": ["@ebuddy/entities#build", "^build"],
+      "cache": false,
+      "persistent": true
     },
-    "emulate": {
-      "dependsOn": ["backend-repo#build"]
-    },
-    "frontend-repo#emulate": {
-      "dependsOn": ["backend-repo#emulate"]
+    "emulated": {
+      "dependsOn": ["^build"]
     }
   }
 }

@@ -1,5 +1,5 @@
 import { apiFetch } from "./api";
-import { User } from "./user";
+import { User } from "@ebuddy/entities";
 
 export const fetchUserData = async (): Promise<User> => {
   return apiFetch("GET", "/fetch-user-data");
